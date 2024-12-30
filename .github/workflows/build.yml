@@ -35,5 +35,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          cd ../../Dm3ak-backend  # Navigate to the directory containing the pom.xml
+          cd Dm3ak-Backend  # Navigate to the directory containing the pom.xml
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=houssam-eddine-razine_CarpoolTesting
