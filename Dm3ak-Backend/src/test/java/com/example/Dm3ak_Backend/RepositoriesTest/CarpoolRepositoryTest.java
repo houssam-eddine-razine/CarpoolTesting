@@ -15,26 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@DataJpaTest
-//class CarpoolRepositoryTest {
-//
-//    @Autowired
-//    private CarpoolRepository carpoolRepository;
-//
-//    @Test
-//    void testFindByDepartureAndArrival() {
-//        Carpool carpool = new Carpool();
-//        carpool.setDeparture("City A");
-//        carpool.setArrival("City B");
-//        carpoolRepository.save(carpool);
-//
-//        List<Carpool> carpools = carpoolRepository.findByDepartureAndArrival("City A", "City B");
-//
-//        assertThat(carpools).hasSize(1);
-//        assertThat(carpools.get(0).getDeparture()).isEqualTo("City A");
-//        assertThat(carpools.get(0).getArrival()).isEqualTo("City B");
-//    }
-//}
+
 @DataJpaTest
 class CarpoolRepositoryTest {
 

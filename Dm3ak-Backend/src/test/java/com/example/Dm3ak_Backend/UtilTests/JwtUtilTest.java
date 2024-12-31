@@ -76,21 +76,4 @@ class JwtUtilTest {
         assertEquals("another@example.com", email, "Token email should match the input email");
     }
 
-//    @Test
-//    void testTokenWithInvalidSecretKey() {
-//        JwtUtil invalidJwtUtil = new JwtUtil() {
-//            @Override
-//            public String extractEmail(String token) {
-//                return Jwts.parser()
-//                        .setSigningKey("InvalidKey$#")
-//                        .parseClaimsJws(token)
-//                        .getBody()
-//                        .getSubject();
-//            }
-//        };
-//
-//        String token = jwtUtil.generateToken("test@example.com");
-//
-//        assertThrows(io.jsonwebtoken.io.DecodingException.class, () -> invalidJwtUtil.extractEmail(token));
-//    }
 }

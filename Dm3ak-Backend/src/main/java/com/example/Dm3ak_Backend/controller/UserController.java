@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +15,12 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
+
     private final UserService userService;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -35,7 +37,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Use PasswordEncoder here
         userService.saveUser(user);
         return "User registered successfully!";
     }
@@ -51,18 +53,6 @@ public class UserController {
         return "User deleted successfully!";
     }
 
-//    @PostMapping("/password/change")
-//    public String changePassword(@RequestParam Long userId, @RequestParam String oldPassword, @RequestParam String newPassword) {
-//        User user = userService.getUser(userId);
-//
-//        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
-//            throw new RuntimeException("Old password is incorrect");
-//        }
-//
-//        user.setPassword(passwordEncoder.encode(newPassword));
-//        userService.saveUser(user);
-//        return "Password changed successfully!";
-//    }
     @PostMapping("/password/change")
     public ResponseEntity<String> changePassword(@RequestParam Long userId, @RequestParam String oldPassword, @RequestParam String newPassword) {
         User user = userService.getUser(userId);

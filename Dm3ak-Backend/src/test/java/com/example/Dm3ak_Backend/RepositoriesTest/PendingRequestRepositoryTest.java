@@ -12,26 +12,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@DataJpaTest
-//class PendingRequestRepositoryTest {
-//
-//    @Autowired
-//    private PendingRequestRepository pendingRequestRepository;
-//
-//    @Test
-//    void testFindByCarpoolId() {
-//        Carpool carpool = new Carpool();
-//        carpool.setId(1L);
-//
-//        PendingRequest pendingRequest = new PendingRequest();
-//        pendingRequest.setCarpool(carpool);
-//        pendingRequestRepository.save(pendingRequest);
-//
-//        Optional<PendingRequest> result = pendingRequestRepository.findByCarpool_Id(1L);
-//        assertTrue(result.isPresent());
-//        assertEquals(1L, result.get().getCarpool().getId());
-//    }
-//}
 @DataJpaTest
 class PendingRequestRepositoryTest {
 

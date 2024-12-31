@@ -13,25 +13,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@DataJpaTest
-//class UserRepositoryTest {
-//
-//    @Autowired
-//    private UserRepository userRepository;
-//
-//    @Test
-//    void testFindByEmail() {
-//        User user = new User();
-//        user.setEmail("user@example.com");
-//        user.setName("John");
-//        user.setFirstname("Doe");
-//        userRepository.save(user);
-//
-//        Optional<User> foundUser = userRepository.findByEmail("user@example.com");
-//        assertTrue(foundUser.isPresent());
-//        assertEquals("John", foundUser.get().getName());
-//    }
-//}
 @DataJpaTest
 class UserRepositoryTest {
 

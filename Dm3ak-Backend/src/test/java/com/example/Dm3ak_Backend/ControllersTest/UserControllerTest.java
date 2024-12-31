@@ -56,4 +56,25 @@ class UserControllerTest {
                 .andExpect(content().string("User registered successfully!"));
     }
 
+    @Test
+    void testChangePassword() throws Exception {
+        User user = new User();
+        user.setPassword("$2a$10$7sU8uH/dO/DV9z5Q5g.TwO2qO93piFbqNJqDpVwm2vAqvN6ZoEjGi"); // Example of an encoded password
+        when(userService.getUser(1L)).thenReturn(user);
+
+        BCryptPasswordEncoder mockPasswordEncoder = Mockito.mock(BCryptPasswordEncoder.class);
+        when(mockPasswordEncoder.matches("oldPassword", user.getPassword())).thenReturn(true);
+        when(mockPasswordEncoder.encode("newPassword")).thenReturn("$2a$10$newEncodedPasswordMock");
+
+        UserController userController = new UserController(userService, mockPasswordEncoder);
+        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+
+        mockMvc.perform(post("/api/users/password/change")
+                        .param("userId", "1")
+                        .param("oldPassword", "oldPassword")
+                        .param("newPassword", "newPassword"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Password changed successfully!"));
+    }
+
 }

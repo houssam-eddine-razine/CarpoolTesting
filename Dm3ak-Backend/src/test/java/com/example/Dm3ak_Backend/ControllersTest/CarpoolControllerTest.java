@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collections;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -60,23 +59,13 @@ class CarpoolControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    void testGetCarpoolByInvalidId() throws Exception {
-//        when(carpoolService.getCarpoolById(999L)).thenReturn(Optional.empty());
-//
-//        mockMvc.perform(get("/api/carpools/999"))
-//                .andExpect(status().isNotFound());
-//    }
-//
-//
-//    @Test
-//    void testBookCarpoolWithInvalidPassenger() throws Exception {
-//        when(userService.getUser(999L)).thenThrow(new RuntimeException("Passenger not found"));
-//
-//        mockMvc.perform(post("/api/carpools/1/book")
-//                        .param("passengerId", "999"))
-//                .andExpect(status().isNotFound());
-//    }
+  @Test
+    void testDeleteCarpool() throws Exception {
+        Mockito.doNothing().when(carpoolService).deleteCarpool(1L);
+
+        mockMvc.perform(delete("/api/carpools/1"))
+                .andExpect(status().isOk());
+    }
 
 }
 
